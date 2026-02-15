@@ -1,1 +1,0 @@
-https://github.com/rursache/RSEssentialsXC/releases/download/v{TAG}/VLCKit.xcframework.zip

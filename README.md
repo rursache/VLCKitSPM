@@ -1,28 +1,43 @@
 # VLCKit SPM
 
-This is a Swift Package Manager compatible version of [VLCKit](https://code.videolan.org/videolan/VLCKit). 
-It distributes and bundles VLCKit for iOS, macOS and tvOS as a single Swift Package. 
+A Swift Package Manager wrapper for [VLCKit](https://code.videolan.org/videolan/VLCKit), distributing pre-built binaries for iOS, macOS, tvOS and visionOS as a single Swift Package.
 
-### Installation
-Add this repo to as a Swift Package dependency to your project
+Binaries are sourced from [VideoLAN's unstable builds](https://download.videolan.org/pub/cocoapods/unstable/) and repackaged as an xcframework attached to GitHub releases.
+
+## Installation
+
+Add this repository as a Swift Package dependency in Xcode:
 ```
 https://github.com/rursache/VLCKitSPM
 ```
-and select "Branch: `master`"
 
-If using this in a swift package, add this repo as a dependency.
+## Usage
+
+```swift
+import VLCKitSPM
 ```
-.package(url: "https://github.com/rursache/VLCKitSPM/", .branch("master"))
+
+See the [VLCKit documentation](https://videolan.videolan.me/VLCKit/) for API details.
+
+## Automated Updates
+
+A GitHub Actions workflow runs on the 1st of every month to check for new VLCKit releases. When a new version is found it:
+
+1. Downloads the latest `VLCKit-*.tar.xz` from VideoLAN
+2. Packages the xcframework into a zip
+3. Updates `Package.swift` with the new release URL and checksum
+4. Creates a tagged GitHub release with the zip attached
+
+## Local Building
+
+To manually generate and update the package with the latest VLCKit binaries:
+
+```sh
+./generate.sh
 ```
 
-### Usage
+This will auto-detect the latest version, download it, update `Package.swift`, and produce `VLCKit.xcframework.zip` for upload to a GitHub release.
 
-To get started, import this library: `import VLCKitSPM`
+## Thanks
 
-See the [VLCKit documentation](https://videolan.videolan.me/VLCKit/) for more info on integration and usage for VLCKit.
-
-### Building
-If you would like to bundle your own VLCKit binaries run the `generate.sh` script.
-
-### Thanks
 Based on [tylerjonesio](https://github.com/tylerjonesio/vlckit-spm)'s idea.
