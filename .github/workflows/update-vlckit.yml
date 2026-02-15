@@ -18,17 +18,25 @@ jobs:
       - name: Find latest VLCKit version
         id: find-latest
         run: |
-          LATEST=$(curl -sL https://download.videolan.org/pub/cocoapods/unstable/ | \
-            grep -oP 'href="(VLCKit-[^"]+\.tar\.xz)"' | \
-            grep -oP 'VLCKit-[^"]+\.tar\.xz' | \
-            sort -V | tail -1)
+          PAGE=$(curl -sfL https://download.videolan.org/pub/cocoapods/unstable/) || {
+            echo "::error::Failed to fetch VideoLAN directory listing"
+            exit 1
+          }
+
+          LATEST=$(echo "$PAGE" | grep -o 'href="VLCKit-[^"]*\.tar\.xz"' | sed 's/href="//;s/"//' | sort -V | tail -1 || true)
 
           if [ -z "$LATEST" ]; then
             echo "::error::Could not find any VLCKit tar.xz files"
             exit 1
           fi
 
-          VERSION=$(echo "$LATEST" | grep -oP '[0-9]+\.[0-9]+\.[0-9]+[a-z]+[0-9]+')
+          VERSION=$(echo "$LATEST" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+[a-z]+[0-9]+' || true)
+
+          if [ -z "$VERSION" ]; then
+            echo "::error::Could not extract version from $LATEST"
+            exit 1
+          fi
+
           DOWNLOAD_URL="https://download.videolan.org/pub/cocoapods/unstable/$LATEST"
 
           echo "latest_file=$LATEST" >> $GITHUB_OUTPUT
@@ -39,8 +47,11 @@ jobs:
       - name: Check if update is needed
         id: check
         run: |
-          CURRENT_VERSION=$(grep -oP '/download/v\K[^/]+' Package.swift)
+          CURRENT_VERSION=$(sed -n 's|.*/download/v\([^/]*\)/.*|\1|p' Package.swift)
           NEW_VERSION="${{ steps.find-latest.outputs.version }}"
+
+          echo "Current: $CURRENT_VERSION"
+          echo "Latest: $NEW_VERSION"
 
           if [ "$CURRENT_VERSION" = "$NEW_VERSION" ]; then
             echo "skip=true" >> $GITHUB_OUTPUT
@@ -125,7 +136,7 @@ jobs:
       - name: Summary (no update)
         if: steps.check.outputs.skip == 'true'
         run: |
-          CURRENT_VERSION=$(grep -oP '/download/v\K[^/]+' Package.swift)
+          CURRENT_VERSION=$(sed -n 's|.*/download/v\([^/]*\)/.*|\1|p' Package.swift)
           echo "### No Update Needed" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Already on latest version: **$CURRENT_VERSION**" >> $GITHUB_STEP_SUMMARY
