@@ -23,7 +23,7 @@ jobs:
             exit 1
           }
 
-          LATEST=$(echo "$PAGE" | grep -o 'href="VLCKit-[^"]*\.tar\.xz"' | sed 's/href="//;s/"//' | sort -V | tail -1 || true)
+          LATEST=$(echo "$PAGE" | grep -o 'href="VLCKit-[0-9][^"]*\.tar\.xz"' | sed 's/href="//;s/"//' | sort -V | tail -1 || true)
 
           if [ -z "$LATEST" ]; then
             echo "::error::Could not find any VLCKit tar.xz files"

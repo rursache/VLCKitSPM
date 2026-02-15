@@ -4,8 +4,8 @@ set -e
 # Auto-detect latest VLCKit from VideoLAN unstable builds
 echo "Finding latest VLCKit..."
 LATEST_FILE=$(curl -sL https://download.videolan.org/pub/cocoapods/unstable/ | \
-    grep -oE 'href="(VLCKit-[^"]+\.tar\.xz)"' | \
-    grep -oE 'VLCKit-[^"]+\.tar\.xz' | \
+    grep -oE 'href="(VLCKit-[0-9][^"]+\.tar\.xz)"' | \
+    grep -oE 'VLCKit-[0-9][^"]+\.tar\.xz' | \
     sort -V | tail -1)
 
 if [ -z "$LATEST_FILE" ]; then
