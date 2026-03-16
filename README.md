@@ -11,6 +11,15 @@ Add this repository as a Swift Package dependency in Xcode:
 https://github.com/rursache/VLCKitSPM
 ```
 
+> **Note:** VLCKit upstream versions contain letters (e.g. `4.0.0a18`), which are not valid semantic versions. Xcode and SPM cannot resolve these through range-based version requirements. You **must** use **Exact Version** when adding the dependency:
+>
+> In Xcode: Add Package → set "Dependency Rule" to **Exact Version** → enter the version (e.g. `4.0.0a18`).
+>
+> In `Package.swift`:
+> ```swift
+> .package(url: "https://github.com/rursache/VLCKitSPM", exact: "4.0.0a18")
+> ```
+
 ## Usage
 
 ```swift
@@ -18,6 +27,8 @@ import VLCKitSPM
 ```
 
 See the [VLCKit documentation](https://videolan.videolan.me/VLCKit/) for API details.
+
+For a sample project, see [vlckit_sample_project](vlckit_sample_project/).
 
 ## Automated Updates
 
