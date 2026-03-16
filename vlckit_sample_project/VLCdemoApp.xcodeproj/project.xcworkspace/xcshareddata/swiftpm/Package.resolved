@@ -1,0 +1,15 @@
+{
+  "originHash" : "30a61ad5b43eea68649b5e69b9e23347e3487f27a2e1e22b5541037d8a0d965e",
+  "pins" : [
+    {
+      "identity" : "vlckitspm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rursache/VLCKitSPM",
+      "state" : {
+        "revision" : "7dcd547cb77a7863c73e00e8289f58074b7d8fc1",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 90;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		173078E92F07C2E600A67925 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173078E82F07C2E600A67925 /* App.swift */; };
+		173079132F07C72D00A67925 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173079142F07C72D00A67925 /* PlayerView.swift */; };
+		173079152F07C72D00A67925 /* VLCPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173079162F07C72D00A67925 /* VLCPlayerView.swift */; };
+		173079172F07C72D00A67925 /* VideoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173079182F07C72D00A67925 /* VideoItem.swift */; };
+		177F23C02F68B56B004EE1F6 /* VLCKitSPM in Frameworks */ = {isa = PBXBuildFile; productRef = 177F23BF2F68B56B004EE1F6 /* VLCKitSPM */; };
+		17A079192F07C72D00A67925 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A0791A2F07C72D00A67925 /* PlayerViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		173078E52F07C2E600A67925 /* VLCdemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VLCdemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		173078E82F07C2E600A67925 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		173079142F07C72D00A67925 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		173079162F07C72D00A67925 /* VLCPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VLCPlayerView.swift; sourceTree = "<group>"; };
+		173079182F07C72D00A67925 /* VideoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItem.swift; sourceTree = "<group>"; };
+		17A0791A2F07C72D00A67925 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		173078E22F07C2E600A67925 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+				177F23C02F68B56B004EE1F6 /* VLCKitSPM in Frameworks */,
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		173078DC2F07C2E600A67925 = {
+			isa = PBXGroup;
+			children = (
+				173078E82F07C2E600A67925 /* App.swift */,
+				173079142F07C72D00A67925 /* PlayerView.swift */,
+				17A0791A2F07C72D00A67925 /* PlayerViewModel.swift */,
+				173079162F07C72D00A67925 /* VLCPlayerView.swift */,
+				173079182F07C72D00A67925 /* VideoItem.swift */,
+				173078E62F07C2E600A67925 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		173078E62F07C2E600A67925 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				173078E52F07C2E600A67925 /* VLCdemoApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		173078E42F07C2E600A67925 /* VLCdemoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 173078F02F07C2E700A67925 /* Build configuration list for PBXNativeTarget "VLCdemoApp" */;
+			buildPhases = (
+				173078E12F07C2E600A67925 /* Sources */,
+				173078E22F07C2E600A67925 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			name = VLCdemoApp;
+			packageProductDependencies = (
+				177F23BF2F68B56B004EE1F6 /* VLCKitSPM */,
+			);
+			productName = VLCdemoApp;
+			productReference = 173078E52F07C2E600A67925 /* VLCdemoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		173078DD2F07C2E600A67925 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				ORGANIZATIONNAME = RanduSoft;
+				TargetAttributes = {
+					173078E42F07C2E600A67925 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+				};
+			};
+			buildConfigurationList = 173078E02F07C2E600A67925 /* Build configuration list for PBXProject "VLCdemoApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 173078DC2F07C2E600A67925;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				177F23BE2F68B56B004EE1F6 /* XCRemoteSwiftPackageReference "VLCKitSPM" */,
+			);
+			preferredProjectObjectVersion = 90;
+			productRefGroup = 173078E62F07C2E600A67925 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				173078E42F07C2E600A67925 /* VLCdemoApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		173078E12F07C2E600A67925 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				173078E92F07C2E600A67925 /* App.swift in Sources */,
+				173079132F07C72D00A67925 /* PlayerView.swift in Sources */,
+				173079152F07C72D00A67925 /* VLCPlayerView.swift in Sources */,
+				173079172F07C72D00A67925 /* VideoItem.swift in Sources */,
+				17A079192F07C72D00A67925 /* PlayerViewModel.swift in Sources */,
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		173078EE2F07C2E700A67925 /* Debug configuration for PBXProject "VLCdemoApp" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3999533L99;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		173078EF2F07C2E700A67925 /* Release configuration for PBXProject "VLCdemoApp" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3999533L99;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		173078F12F07C2E700A67925 /* Debug configuration for PBXNativeTarget "VLCdemoApp" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3999533L99;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = VLCdemoApp;
+				INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads = YES;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = Demo;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIBackgroundModes = audio;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.vlcdemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		173078F22F07C2E700A67925 /* Release configuration for PBXNativeTarget "VLCdemoApp" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3999533L99;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = VLCdemoApp;
+				INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads = YES;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = Demo;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIBackgroundModes = audio;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ro.randusoft.vlcdemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		173078E02F07C2E600A67925 /* Build configuration list for PBXProject "VLCdemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				173078EE2F07C2E700A67925 /* Debug configuration for PBXProject "VLCdemoApp" */,
+				173078EF2F07C2E700A67925 /* Release configuration for PBXProject "VLCdemoApp" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		173078F02F07C2E700A67925 /* Build configuration list for PBXNativeTarget "VLCdemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				173078F12F07C2E700A67925 /* Debug configuration for PBXNativeTarget "VLCdemoApp" */,
+				173078F22F07C2E700A67925 /* Release configuration for PBXNativeTarget "VLCdemoApp" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		177F23BE2F68B56B004EE1F6 /* XCRemoteSwiftPackageReference "VLCKitSPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rursache/VLCKitSPM";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		177F23BF2F68B56B004EE1F6 /* VLCKitSPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 177F23BE2F68B56B004EE1F6 /* XCRemoteSwiftPackageReference "VLCKitSPM" */;
+			productName = VLCKitSPM;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 173078DD2F07C2E600A67925 /* Project object */;
+}
