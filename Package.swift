@@ -7,7 +7,9 @@ let package = Package(
     platforms: [
         .iOS(.v13),
         .macOS(.v11),
-        .tvOS(.v13)
+        .tvOS(.v13),
+        .watchOS(.v9),
+        .visionOS(.v1)
     ],
     products: [
         .library(
@@ -26,20 +28,20 @@ let package = Package(
             dependencies: [
                 .target(name: "VLCKitXC")
             ], linkerSettings: [
-                .linkedFramework("QuartzCore", .when(platforms: [.iOS])),
-                .linkedFramework("CoreText", .when(platforms: [.iOS, .tvOS])),
-                .linkedFramework("AVFoundation", .when(platforms: [.iOS, .tvOS])),
-                .linkedFramework("Security", .when(platforms: [.iOS])),
-                .linkedFramework("CFNetwork", .when(platforms: [.iOS])),
-                .linkedFramework("AudioToolbox", .when(platforms: [.iOS, .tvOS])),
+                .linkedFramework("QuartzCore", .when(platforms: [.iOS, .tvOS, .visionOS])),
+                .linkedFramework("CoreText", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
+                .linkedFramework("AVFoundation", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
+                .linkedFramework("Security", .when(platforms: [.iOS, .watchOS, .visionOS])),
+                .linkedFramework("CFNetwork", .when(platforms: [.iOS, .watchOS, .visionOS])),
+                .linkedFramework("AudioToolbox", .when(platforms: [.iOS, .tvOS, .visionOS])),
                 .linkedFramework("OpenGLES", .when(platforms: [.iOS, .tvOS])),
-                .linkedFramework("CoreGraphics", .when(platforms: [.iOS])),
-                .linkedFramework("VideoToolbox", .when(platforms: [.iOS, .tvOS])),
-                .linkedFramework("CoreMedia", .when(platforms: [.iOS, .tvOS])),
-                .linkedLibrary("c++", .when(platforms: [.iOS, .tvOS])),
-                .linkedLibrary("xml2", .when(platforms: [.iOS, .tvOS])),
-                .linkedLibrary("z", .when(platforms: [.iOS, .tvOS])),
-                .linkedLibrary("bz2", .when(platforms: [.iOS, .tvOS])),
+                .linkedFramework("CoreGraphics", .when(platforms: [.iOS, .watchOS, .visionOS])),
+                .linkedFramework("VideoToolbox", .when(platforms: [.iOS, .tvOS, .visionOS])),
+                .linkedFramework("CoreMedia", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
+                .linkedLibrary("c++", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
+                .linkedLibrary("xml2", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
+                .linkedLibrary("z", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
+                .linkedLibrary("bz2", .when(platforms: [.iOS, .tvOS, .watchOS, .visionOS])),
                 .linkedFramework("Foundation", .when(platforms: [.macOS])),
                 .linkedLibrary("iconv")
             ]

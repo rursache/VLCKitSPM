@@ -11,13 +11,33 @@ Add this repository as a Swift Package dependency in Xcode:
 https://github.com/rursache/VLCKitSPM
 ```
 
-> **Note:** VLCKit upstream versions contain letters (e.g. `4.0.0a18`), which are not valid semantic versions. Xcode and SPM cannot resolve these through range-based version requirements. You **must** use **Exact Version** when adding the dependency:
+> **Note:** VLCKit upstream versions contain letters (e.g. `4.0.0a18`), which are not valid semantic versions. Xcode and SPM cannot resolve these through range-based version requirements. You should either use **Exact Version** or point to a **branch/commit**:
+>
+> **Option 1 – Exact Version:**
 >
 > In Xcode: Add Package → set "Dependency Rule" to **Exact Version** → enter the version (e.g. `4.0.0a18`).
 >
 > In `Package.swift`:
 > ```swift
 > .package(url: "https://github.com/rursache/VLCKitSPM", exact: "4.0.0a18")
+> ```
+>
+> **Option 2 – Branch (always latest):**
+>
+> In Xcode: Add Package → set "Dependency Rule" to **Branch** → enter `master`.
+>
+> In `Package.swift`:
+> ```swift
+> .package(url: "https://github.com/rursache/VLCKitSPM", branch: "master")
+> ```
+>
+> **Option 3 – Commit:**
+>
+> In Xcode: Add Package → set "Dependency Rule" to **Commit** → paste the commit hash.
+>
+> In `Package.swift`:
+> ```swift
+> .package(url: "https://github.com/rursache/VLCKitSPM", revision: "COMMIT_HASH")
 > ```
 
 ## Usage
