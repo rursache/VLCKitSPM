@@ -14,7 +14,7 @@ let package = Package(
     products: [
         .library(
             name: "VLCKitSPM",
-            targets: ["VLCKitSPM"]
+            targets: ["VLCKitSPM", "VLCKitXC"]
         ),
     ],
     targets: [
