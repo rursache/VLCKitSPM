@@ -282,7 +282,7 @@ step_start=$(date +%s)
 
 cd "${WORK_DIR}/VLCKit"
 
-XC_ARGS=""
+XC_ARGS=()
 SLICES_FOUND=0
 
 for platform in "${PLATFORMS[@]}"; do
@@ -304,7 +304,7 @@ for platform in "${PLATFORMS[@]}"; do
         framework_path="${slice_dir}VLCKit.framework"
         if [ -d "${framework_path}" ]; then
             abs_framework_path=$(cd "${framework_path}" && pwd)
-            XC_ARGS="${XC_ARGS} -framework ${abs_framework_path}"
+            XC_ARGS+=(-framework "${abs_framework_path}")
             SLICES_FOUND=$((SLICES_FOUND + 1))
             info "  Found slice: ${slice_name}"
 
@@ -312,7 +312,7 @@ for platform in "${PLATFORMS[@]}"; do
             dsym_path="${slice_dir}dSYMs/VLCKit.framework.dSYM"
             if [ -d "${dsym_path}" ]; then
                 abs_dsym_path=$(cd "${dsym_path}" && pwd)
-                XC_ARGS="${XC_ARGS} -debug-symbols ${abs_dsym_path}"
+                XC_ARGS+=(-debug-symbols "${abs_dsym_path}")
                 info "    + dSYM found"
             fi
         fi
@@ -331,8 +331,7 @@ UNIFIED_OUTPUT="${WORK_DIR}/VLCKit/build/unified/VLCKit.xcframework"
 rm -rf "${UNIFIED_OUTPUT}"
 mkdir -p "$(dirname "${UNIFIED_OUTPUT}")"
 
-# shellcheck disable=SC2086
-xcodebuild -create-xcframework ${XC_ARGS} -output "${UNIFIED_OUTPUT}" 2>&1 | tee "${LOG_DIR}/merge_xcframework.log"
+xcodebuild -create-xcframework "${XC_ARGS[@]}" -output "${UNIFIED_OUTPUT}" 2>&1 | tee "${LOG_DIR}/merge_xcframework.log"
 
 if [ ! -d "${UNIFIED_OUTPUT}" ]; then
     error "Failed to create unified VLCKit.xcframework"
