@@ -1,44 +1,19 @@
-# VLCKit SPM
+# VLCKit SPM — Nightly
 
-A Swift Package Manager wrapper for [VLCKit](https://code.videolan.org/videolan/VLCKit), distributing pre-built binaries for iOS, macOS, tvOS and visionOS as a single Swift Package.
+Custom-built VLCKit xcframework from the latest VLC libvlc source, targeting all Apple platforms (iOS, tvOS, macOS, visionOS, watchOS + simulators).
 
-Binaries are sourced from [VideoLAN's unstable builds](https://download.videolan.org/pub/cocoapods/unstable/) and repackaged as an xcframework attached to GitHub releases.
+This branch tracks nightly/development builds. For stable releases, see the [`master`](https://github.com/rursache/VLCKitSPM/tree/master) branch.
 
 ## Installation
 
-Add this repository as a Swift Package dependency in Xcode:
-```
-https://github.com/rursache/VLCKitSPM
-```
+Add this repository as a Swift Package dependency pointing to the `nightly` branch:
 
-> **Note:** VLCKit upstream versions contain letters (e.g. `4.0.0a18`), which are not valid semantic versions. Xcode and SPM cannot resolve these through range-based version requirements. You should either use **Exact Version** or point to a **branch/commit**:
->
-> **Option 1 – Exact Version:**
->
-> In Xcode: Add Package → set "Dependency Rule" to **Exact Version** → enter the version (e.g. `4.0.0a18`).
->
-> In `Package.swift`:
-> ```swift
-> .package(url: "https://github.com/rursache/VLCKitSPM", exact: "4.0.0a18")
-> ```
->
-> **Option 2 – Branch (always latest):**
->
-> In Xcode: Add Package → set "Dependency Rule" to **Branch** → enter `master`.
->
-> In `Package.swift`:
-> ```swift
-> .package(url: "https://github.com/rursache/VLCKitSPM", branch: "master")
-> ```
->
-> **Option 3 – Commit:**
->
-> In Xcode: Add Package → set "Dependency Rule" to **Commit** → paste the commit hash.
->
-> In `Package.swift`:
-> ```swift
-> .package(url: "https://github.com/rursache/VLCKitSPM", revision: "COMMIT_HASH")
-> ```
+**In Xcode:** Add Package → set "Dependency Rule" to **Branch** → enter `nightly`.
+
+**In `Package.swift`:**
+```swift
+.package(url: "https://github.com/rursache/VLCKitSPM", branch: "nightly")
+```
 
 ## Usage
 
@@ -48,26 +23,15 @@ import VLCKitSPM
 
 See the [VLCKit documentation](https://videolan.videolan.me/VLCKit/) for API details.
 
-For a sample project, see [vlckit_sample_project](vlckit_sample_project/).
+## Building
 
-## Automated Updates
-
-A GitHub Actions workflow runs on the 1st of every month to check for new VLCKit releases. When a new version is found it:
-
-1. Downloads the latest `VLCKit-*.tar.xz` from VideoLAN
-2. Packages the xcframework into a zip
-3. Updates `Package.swift` with the new release URL and checksum
-4. Creates a tagged GitHub release with the zip attached
-
-## Local Building
-
-To manually generate and update the package with the latest VLCKit binaries:
+To rebuild the xcframework from source:
 
 ```sh
-./generate.sh
+./build_vlckit_latest.sh
 ```
 
-This will auto-detect the latest version, download it, update `Package.swift`, and produce `VLCKit.xcframework.zip` for upload to a GitHub release.
+This clones VLCKit + VLC from VideoLAN, applies platform patches (including macOS fixes), builds all platform slices, and produces a unified `VLCKit.xcframework`.
 
 ## Thanks
 

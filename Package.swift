@@ -20,7 +20,7 @@ let package = Package(
     targets: [
         .binaryTarget(
            name: "VLCKitXC",
-           url: "https://github.com/rursache/VLCKitSPM/releases/download/nightly/VLCKit.xcframework.zip",
+           url: "https://github.com/rursache/VLCKitSPM/releases/download/nightly-build/VLCKit.xcframework.zip",
            checksum: "f27f696e34a49f66d20ec137aaa01ef8198310390a7b97d67c75757d4bec8ef0"
         ),
         .target(
