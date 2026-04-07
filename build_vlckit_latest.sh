@@ -196,12 +196,11 @@ s/if \[ "\$XROS" != "yes" \]; then/if [ "$MACOS" = "yes" ]; then\
 sed -i '' 's/SDKROOT = xros;/SDKROOT = auto;/g' "${VLCKIT_DIR}/VLCKit.xcodeproj/project.pbxproj"
 
 # Fix 3: Add -ld64 linker flag for macOS (fixes duplicate symbol errors with new linker)
-sed -i '' '/"OTHER_LDFLAGS\[sdk=xros\*\]"/i\
-\t\t\t\t"OTHER_LDFLAGS[sdk=macosx*]" = (\
-\t\t\t\t\t"-ObjC",\
-\t\t\t\t\t"-ld64",\
-\t\t\t\t);
-' "${VLCKIT_DIR}/VLCKit.xcodeproj/project.pbxproj"
+# Use perl instead of sed to avoid BSD sed tab-handling issues that corrupt the pbxproj
+perl -i -pe 'if (!$done && /\"OTHER_LDFLAGS\[sdk=xros\*\]\"/) {
+    print "\t\t\t\t\"OTHER_LDFLAGS[sdk=macosx*]\" = (\n\t\t\t\t\t\"-ObjC\",\n\t\t\t\t\t\"-ld64\",\n\t\t\t\t);\n";
+    $done = 1;
+}' "${VLCKIT_DIR}/VLCKit.xcodeproj/project.pbxproj"
 
 # Fix 4: Force-disable dup3/pipe2 on Apple platforms
 # Meson may incorrectly detect these during cross-compilation (e.g. simulator builds
