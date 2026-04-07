@@ -203,16 +203,13 @@ sed -i '' '/"OTHER_LDFLAGS\[sdk=xros\*\]"/i\
 \t\t\t\t);
 ' "${VLCKIT_DIR}/VLCKit.xcodeproj/project.pbxproj"
 
-# Fix 4: Force-undef HAVE_DUP3/HAVE_PIPE2 on Apple platforms
+# Fix 4: Force-disable dup3/pipe2 on Apple platforms
 # Meson may incorrectly detect these during cross-compilation (e.g. simulator builds
 # picking up the native macOS config), but dup3/pipe2 are not available in Apple SDKs.
-# The #else fallbacks in filesystem.c use dup2/pipe + vlc_cloexec which work everywhere.
-sed -i '' '1i\
-#ifdef __APPLE__\
-#undef HAVE_DUP3\
-#undef HAVE_PIPE2\
-#endif
-' "${VLC_DIR}/src/posix/filesystem.c"
+# Replace the #ifdef checks to also exclude __APPLE__, ensuring the safe fallbacks
+# (dup2 + vlc_cloexec, pipe + vlc_cloexec) are always used on Apple.
+sed -i '' 's/#ifdef HAVE_DUP3/#if defined(HAVE_DUP3) \&\& !defined(__APPLE__)/' "${VLC_DIR}/src/posix/filesystem.c"
+sed -i '' 's/#ifdef HAVE_PIPE2/#if defined(HAVE_PIPE2) \&\& !defined(__APPLE__)/' "${VLC_DIR}/src/posix/filesystem.c"
 
 # Fix 5: Make json callback functions weak to prevent duplicate symbol errors
 # when chromecast and webservices plugins are statically linked together
