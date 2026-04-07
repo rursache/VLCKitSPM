@@ -177,6 +177,7 @@ fi
 info "Step 4b: Applying build fixes..."
 
 VLCKIT_DIR="${WORK_DIR}/VLCKit"
+VLC_DIR="${VLCKIT_DIR}/libvlc/vlc"
 
 # Fix 1: Platform-specific deployment targets in compileAndBuildVLCKit.sh
 # The original script uses IPHONEOS_DEPLOYMENT_TARGET for all platforms,
@@ -202,9 +203,19 @@ sed -i '' '/"OTHER_LDFLAGS\[sdk=xros\*\]"/i\
 \t\t\t\t);
 ' "${VLCKIT_DIR}/VLCKit.xcodeproj/project.pbxproj"
 
-# Fix 4: Make json callback functions weak to prevent duplicate symbol errors
+# Fix 4: Force-undef HAVE_DUP3/HAVE_PIPE2 on Apple platforms
+# Meson may incorrectly detect these during cross-compilation (e.g. simulator builds
+# picking up the native macOS config), but dup3/pipe2 are not available in Apple SDKs.
+# The #else fallbacks in filesystem.c use dup2/pipe + vlc_cloexec which work everywhere.
+sed -i '' '1i\
+#ifdef __APPLE__\
+#undef HAVE_DUP3\
+#undef HAVE_PIPE2\
+#endif
+' "${VLC_DIR}/src/posix/filesystem.c"
+
+# Fix 5: Make json callback functions weak to prevent duplicate symbol errors
 # when chromecast and webservices plugins are statically linked together
-VLC_DIR="${VLCKIT_DIR}/libvlc/vlc"
 sed -i '' 's/^void json_parse_error(void \*data, const char \*msg)$/__attribute__((weak)) void json_parse_error(void *data, const char *msg)/' \
     "${VLC_DIR}/modules/misc/webservices/json_helper.h"
 sed -i '' 's/^size_t json_read(void \*data, void \*buf, size_t size)$/__attribute__((weak)) size_t json_read(void *data, void *buf, size_t size)/' \
