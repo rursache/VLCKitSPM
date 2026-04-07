@@ -19,13 +19,19 @@ WORK_DIR=$(mktemp -d "${TMPDIR:-/tmp}/vlckit_build_${TIMESTAMP}.XXXXXX")
 LOG_DIR="${WORK_DIR}/logs"
 
 PLATFORMS=("iOS" "tvOS" "macOS" "xrOS" "watchOS")
+
+# Returns build flags for a given platform
 # Flags for compileAndBuildVLCKit.sh: platform flag, -r (release), -f (framework), -n (no network)
-declare -A PLATFORM_FLAGS
-PLATFORM_FLAGS[iOS]="-rf -n"
-PLATFORM_FLAGS[tvOS]="-trf -n"
-PLATFORM_FLAGS[macOS]="-xrf -n"
-PLATFORM_FLAGS[xrOS]="-irf -n"
-PLATFORM_FLAGS[watchOS]="-wrf -n"
+platform_flags() {
+    case "$1" in
+        iOS)     echo "-rf -n" ;;
+        tvOS)    echo "-trf -n" ;;
+        macOS)   echo "-xrf -n" ;;
+        xrOS)    echo "-irf -n" ;;
+        watchOS) echo "-wrf -n" ;;
+        *)       echo ""; return 1 ;;
+    esac
+}
 
 #######################################
 # Helpers
@@ -227,7 +233,7 @@ for platform in "${PLATFORMS[@]}"; do
 
     cd "${WORK_DIR}/VLCKit"
 
-    flags="${PLATFORM_FLAGS[$platform]}"
+    flags=$(platform_flags "$platform")
 
     info "Running: ./compileAndBuildVLCKit.sh ${flags}"
     info "Log: ${platform_log}"
