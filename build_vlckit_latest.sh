@@ -110,7 +110,12 @@ SCRIPT_START=$(date +%s)
 trap cleanup EXIT
 
 # Resolve output directory to absolute path
-OUTPUT_DIR=$(cd "${OUTPUT_DIR}" 2>/dev/null && pwd || mkdir -p "${OUTPUT_DIR}" && cd "${OUTPUT_DIR}" && pwd)
+if [ -d "${OUTPUT_DIR}" ]; then
+    OUTPUT_DIR=$(cd "${OUTPUT_DIR}" && pwd)
+else
+    mkdir -p "${OUTPUT_DIR}"
+    OUTPUT_DIR=$(cd "${OUTPUT_DIR}" && pwd)
+fi
 
 info "============================================"
 info "VLCKit Unified XCFramework Builder"
