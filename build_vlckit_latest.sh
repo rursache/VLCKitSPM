@@ -268,7 +268,7 @@ for platform in "${PLATFORMS[@]}"; do
         tail -30 "${platform_log}" || true
         echo "--- End of log excerpt ---"
         BUILD_RESULTS+=("${platform}: FAILED (${platform_elapsed})")
-        # Continue with remaining platforms rather than aborting
+        exit 1
     fi
     info ""
 done
